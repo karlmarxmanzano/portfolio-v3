@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { navLinks } from "@/lib/site-data";
+import { navLinks, socials } from "@/lib/site-data";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -38,7 +38,7 @@ export function SiteNav() {
           <Button
             variant="outline"
             className="hidden border-line-2 bg-surface px-4 py-2.5 text-text hover:border-blue sm:inline-flex"
-            render={<a href="#" />}
+            render={<a href={socials.resume} target="_blank" rel="noopener" />}
             nativeButton={false}
           >
             <ArrowUpRight className="rotate-45" />
