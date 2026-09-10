@@ -1,79 +1,50 @@
-import { ArrowRight, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Portrait } from "@/components/site/portrait";
-import { GithubIcon, LinkedinIcon } from "@/components/site/icons";
 import { socials } from "@/lib/site-data";
 
 export function Hero() {
   return (
-    <header id="top" className="pt-16 pb-20 sm:pt-19">
-      <div className="mx-auto grid max-w-280 items-center gap-11 px-5 sm:px-7 md:grid-cols-[1.15fr_0.85fr] md:gap-14">
-        <div>
-          <span className="mb-6.5 inline-flex items-center gap-2.5 rounded-full border border-line-2 px-3.5 py-1.5 text-[12.5px] text-text">
-            <span className="size-1.75 rounded-full bg-blue" />
-            Available for new opportunities
-          </span>
-
-          <h1 className="mb-3 font-display text-[clamp(2.5rem,5.6vw,4.125rem)] leading-[1.02] font-extrabold tracking-tight">
-            Karl Marx Manzano
-          </h1>
-
-          <p className="mb-8 max-w-[44ch] text-[16.5px] text-muted-foreground">
-            8+ years shipping{" "}
-            <strong className="font-semibold text-text">end-to-end</strong> — development, deployment,
-            maintenance. Currently, wiring LLMs into AI-powered applications and diving deeper into AI.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <Button
-              render={<a href="#work" />}
-              nativeButton={false}
-              className="h-auto rounded-[11px] bg-blue px-5 py-2.75 text-sm font-semibold text-[#06070d] hover:bg-blue/90"
-            >
-              View my work
-              <ArrowRight />
-            </Button>
-            <Button
-              variant="outline"
-              render={<a href="#contact" />}
-              nativeButton={false}
-              className="h-auto rounded-[11px] border-line-2 px-5 py-2.75 text-sm font-semibold text-text hover:border-blue"
-            >
-              Get in touch
-            </Button>
-          </div>
-
-          <div className="mt-7.5 flex gap-2.75">
-            <a
-              aria-label="GitHub"
-              href={socials.github}
-              target="_blank"
-              rel="noopener"
-              className="grid size-10.5 place-items-center rounded-[11px] border border-line text-muted-foreground transition-colors hover:border-blue hover:text-head"
-            >
-              <GithubIcon className="size-4.5" />
-            </a>
-            <a
-              aria-label="LinkedIn"
-              href={socials.linkedin}
-              target="_blank"
-              rel="noopener"
-              className="grid size-10.5 place-items-center rounded-[11px] border border-line text-muted-foreground transition-colors hover:border-blue hover:text-head"
-            >
-              <LinkedinIcon className="size-4.5" />
-            </a>
-            <a
-              aria-label="Email"
-              href={socials.email}
-              className="grid size-10.5 place-items-center rounded-[11px] border border-line text-muted-foreground transition-colors hover:border-blue hover:text-head"
-            >
-              <Mail className="size-4.5" />
-            </a>
-          </div>
+    <section className="[animation:km-rise_0.7s_cubic-bezier(0.2,0.8,0.2,1)_both]">
+      <div className="mb-9 flex items-center gap-4">
+        <div className="size-16.5 shrink-0 overflow-hidden rounded-full border border-foreground/[0.14]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/portrait.jpg" alt="Karl Marx Manzano" className="h-full w-full object-cover" />
         </div>
-
-        <Portrait />
       </div>
-    </header>
+
+      <h1 className="mb-7 text-[25px] leading-[1.5] font-normal tracking-[-0.012em] text-pretty">
+        Karl Marx Manzano is a full-stack developer based in La Union, Philippines, with around eight years
+        building production software — SaaS platforms, CRMs, and AI-powered pipelines — with Laravel,
+        Nuxt.js, Vue and C#/.NET. He favors clean architecture and domain-driven design, and is currently
+        wiring LLMs into everyday applications.
+        <span
+          aria-hidden
+          className="ml-1 inline-block h-[19px] w-2 translate-y-[-3px] bg-foreground align-middle"
+          style={{ animation: "caret-blink 1.2s steps(1) infinite" }}
+        />
+      </h1>
+
+      <div className="mb-4.5 flex flex-wrap gap-5 text-sm">
+        <a href="#work" className="border-b border-foreground/[0.32] pb-0.5">
+          See the work
+        </a>
+        <a href={socials.resume} target="_blank" rel="noopener" className="border-b border-foreground/[0.32] pb-0.5">
+          Download resume
+        </a>
+        <a href="#contact" className="border-b border-foreground/[0.32] pb-0.5">
+          Get in touch
+        </a>
+      </div>
+
+      <div className="flex flex-wrap gap-4.5 font-mono text-[11px] tracking-[0.1em] text-muted-foreground uppercase">
+        <a href={socials.github} target="_blank" rel="noopener" className="transition-colors hover:text-foreground">
+          GitHub
+        </a>
+        <a href={socials.linkedin} target="_blank" rel="noopener" className="transition-colors hover:text-foreground">
+          LinkedIn
+        </a>
+        <a href={socials.email} className="transition-colors hover:text-foreground">
+          Email
+        </a>
+      </div>
+    </section>
   );
 }

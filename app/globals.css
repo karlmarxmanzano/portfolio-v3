@@ -5,53 +5,70 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* brand palette */
-  --bg: #0a0c14;
-  --bg-2: #0e111c;
-  --surface: rgba(255, 255, 255, 0.035);
-  --surface-2: rgba(255, 255, 255, 0.06);
-  --line: rgba(255, 255, 255, 0.09);
-  --line-2: rgba(255, 255, 255, 0.16);
-  --text: #e4e8f1;
-  --muted-text: #97a0b5;
-  --faint: #5f6883;
-  --head: #f4f6fb;
-  --blue: #5b8cff;
-  --violet: #a78bff;
-  --teal: #3ed8b0;
-  --glow: rgba(91, 140, 255, 0.3);
-
-  --display-font: "Bricolage Grotesque", system-ui, sans-serif;
-  --body-font: "Inter", system-ui, sans-serif;
-  --mono-font: "JetBrains Mono", ui-monospace, monospace;
+  /* monochrome palette — light */
+  --background: #fafafa;
+  --foreground: #16161a;
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-2: rgba(0, 0, 0, 0.05);
+  --line: rgba(0, 0, 0, 0.08);
+  --line-2: rgba(0, 0, 0, 0.16);
+  --muted-text: #68686f;
+  --faint: #86868c;
 
   --radius: 0.85rem;
 
-  /* shadcn tokens mapped onto the brand palette */
-  --background: var(--bg);
-  --foreground: var(--text);
-  --card: var(--bg-2);
-  --card-foreground: var(--text);
-  --popover: var(--bg-2);
-  --popover-foreground: var(--text);
-  --primary: var(--blue);
-  --primary-foreground: #06070d;
+  /* shadcn tokens mapped onto the monochrome palette */
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
   --secondary: var(--surface-2);
-  --secondary-foreground: var(--text);
+  --secondary-foreground: var(--foreground);
   --muted: var(--surface);
   --muted-foreground: var(--muted-text);
   --accent: var(--surface-2);
-  --accent-foreground: var(--head);
-  --destructive: #e5484d;
+  --accent-foreground: var(--foreground);
+  --destructive: #c9433a;
   --border: var(--line);
   --input: var(--line-2);
-  --ring: var(--blue);
+  --ring: var(--foreground);
+}
+
+.dark {
+  /* monochrome palette — dark */
+  --background: #0a0a0b;
+  --foreground: #ededec;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-2: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --muted-text: #9a9aa0;
+  --faint: #8a8a90;
+
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface);
+  --muted-foreground: var(--muted-text);
+  --accent: var(--surface-2);
+  --accent-foreground: var(--foreground);
+  --destructive: #ff6a63;
+  --border: var(--line);
+  --input: var(--line-2);
+  --ring: var(--foreground);
 }
 
 @theme inline {
-  --font-sans: var(--body-font);
-  --font-display: var(--display-font);
-  --font-mono: var(--mono-font);
+  --font-sans: var(--font-instrument-sans);
+  --font-display: var(--font-instrument-sans);
+  --font-mono: var(--font-jetbrains-mono);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -72,16 +89,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-blue: var(--blue);
-  --color-violet: var(--violet);
-  --color-teal: var(--teal);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-line: var(--line);
   --color-line-2: var(--line-2);
   --color-faint: var(--faint);
-  --color-head: var(--head);
-  --color-bg-2: var(--bg-2);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -98,14 +110,42 @@
   }
   html {
     @apply scroll-smooth font-sans;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
   }
   body {
     @apply relative bg-background text-foreground antialiased;
     overflow-x: clip;
   }
   ::selection {
-    background: var(--blue);
-    color: #06070d;
+    background: var(--foreground);
+    color: var(--background);
   }
 }
 
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes km-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

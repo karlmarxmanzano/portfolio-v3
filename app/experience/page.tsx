@@ -25,20 +25,20 @@ export default function ExperiencePage() {
     <>
       <SiteNav />
       <main>
-        <section className="py-20">
-          <div className="mx-auto max-w-280 px-5 sm:px-7">
+        <section className="py-16">
+          <div className="mx-auto max-w-3xl px-5 sm:px-7">
             <Reveal>
               <Link
                 href="/#experience"
-                className="mb-8 inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-blue"
+                className="mb-8 inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ArrowLeft className="size-3.5" />
                 Back to overview
               </Link>
-              <span className="mb-3 block font-mono text-xs tracking-[0.12em] text-muted-foreground uppercase">
+              <span className="mb-3 block font-mono text-[10px] tracking-[0.22em] text-muted-foreground uppercase">
                 Experience
               </span>
-              <h1 className="max-w-[24ch] font-display text-[clamp(1.75rem,3.6vw,2.5rem)] leading-[1.06] font-bold tracking-tight">
+              <h1 className="max-w-[24ch] text-[clamp(1.75rem,3.6vw,2.5rem)] leading-[1.06] font-semibold tracking-tight">
                 Full work history.
               </h1>
             </Reveal>
@@ -47,12 +47,12 @@ export default function ExperiencePage() {
               <div className="relative pl-7.5 before:absolute before:top-1.5 before:bottom-1.5 before:left-1.25 before:w-px before:bg-line">
                 {experience.map((item) => (
                   <div key={item.company} id={slugFor(item)} className="relative scroll-mt-24 pb-9 last:pb-0">
-                    <div className="absolute top-1.25 -left-7.5 size-3 rounded-full border-2 border-blue bg-background" />
+                    <div className="absolute top-1.25 -left-7.5 size-3 rounded-full border-2 border-foreground/40 bg-background" />
                     <div className="mb-1.5 font-mono text-[11.5px] tracking-wide text-faint uppercase">
                       {item.when}
                     </div>
-                    <h2 className="font-display text-lg font-bold tracking-tight text-head">
-                      {item.role} <span className="text-blue">· {item.company}</span>
+                    <h2 className="text-lg font-semibold tracking-tight">
+                      {item.role} <span className="text-muted-foreground">· {item.company}</span>
                     </h2>
                     <p className="mt-0.5 text-sm text-muted-foreground">{item.location}</p>
                     <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted-foreground">

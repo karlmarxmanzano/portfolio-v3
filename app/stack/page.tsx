@@ -22,16 +22,16 @@ export default function StackPage() {
     <>
       <SiteNav />
       <main className="py-16">
-        <div className="mx-auto max-w-280 px-5 sm:px-7">
+        <div className="mx-auto max-w-3xl px-5 sm:px-7">
           <a
             href="/"
-            className="mb-8 inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-blue"
+            className="mb-8 inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="size-3.5" />
             Back
           </a>
 
-          <h1 className="mb-4 font-display text-[clamp(1.875rem,4.4vw,3rem)] leading-[1.05] font-extrabold tracking-tight">
+          <h1 className="mb-4 text-[clamp(1.875rem,4.4vw,3rem)] leading-[1.05] font-semibold tracking-tight">
             Tech stack
           </h1>
           <p className="mb-14 text-[16.5px] text-muted-foreground">
@@ -51,7 +51,7 @@ export default function StackPage() {
                     .map((skill) => (
                       <span
                         key={skill.name}
-                        className="rounded-lg border border-line px-3.5 py-2 font-mono text-[13px] text-text"
+                        className="rounded-lg border border-line px-3.5 py-2 font-mono text-[13px] text-foreground"
                       >
                         {skill.name}
                       </span>
