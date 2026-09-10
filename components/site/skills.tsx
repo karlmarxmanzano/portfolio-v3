@@ -1,48 +1,42 @@
-import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/reveal";
-import { skills } from "@/lib/site-data";
+import { skills, skillCategoryLabels, type SkillCategory } from "@/lib/site-data";
 
-const PREVIEW_COUNT = 12;
+const categoryOrder: SkillCategory[] = ["frontend", "backend", "database", "devops"];
 
 export function Skills() {
-  const preview = skills.slice(0, PREVIEW_COUNT);
-  const remaining = skills.length - preview.length;
-
   return (
-    <section id="skills" className="scroll-mt-17.5 py-20">
-      <div className="mx-auto max-w-280 px-5 sm:px-7">
-        <Reveal>
-          <div className="mb-6 flex items-center justify-between">
-            <span className="font-mono text-xs tracking-[0.12em] text-muted-foreground uppercase">Stack</span>
-            <a
-              href="/stack"
-              className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-blue"
-            >
-              View all
-              <ArrowRight className="size-3.5" />
-            </a>
-          </div>
+    <Reveal>
+      <section id="stack" className="mt-25 scroll-mt-16">
+        <div className="border-b border-foreground/[0.10] pb-3.5 font-mono text-[10px] tracking-[0.22em] text-faint uppercase">
+          Stack
+        </div>
 
-          <div className="flex flex-wrap gap-2">
-            {preview.map((skill) => (
-              <span
-                key={skill.name}
-                className="rounded-lg border border-line px-3.5 py-2 font-mono text-[13px] text-text"
-              >
-                {skill.name}
-              </span>
-            ))}
-            {remaining > 0 && (
-              <a
-                href="/stack"
-                className="rounded-lg border border-dashed border-line-2 px-3.5 py-2 font-mono text-[13px] text-muted-foreground transition-colors hover:border-blue hover:text-blue"
-              >
-                + {remaining} more
-              </a>
-            )}
+        {categoryOrder.map((category) => (
+          <div
+            key={category}
+            className="grid grid-cols-[minmax(0,150px)_minmax(0,1fr)] gap-4 border-b border-foreground/[0.07] py-5"
+          >
+            <span className="pt-0.75 font-mono text-[10px] tracking-[0.14em] text-faint uppercase">
+              {skillCategoryLabels[category]}
+            </span>
+            <span className="text-sm leading-[1.7] text-foreground/80 text-pretty">
+              {skills
+                .filter((skill) => skill.category === category)
+                .map((skill) => skill.name)
+                .join(" · ")}
+            </span>
           </div>
-        </Reveal>
-      </div>
-    </section>
+        ))}
+
+        <div className="pt-4">
+          <a
+            href="/stack"
+            className="font-mono text-[10px] tracking-[0.14em] text-faint uppercase transition-colors hover:text-foreground"
+          >
+            Standalone page →
+          </a>
+        </div>
+      </section>
+    </Reveal>
   );
 }

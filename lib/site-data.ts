@@ -1,8 +1,7 @@
 export const navLinks = [
-  { label: "About", href: "/#about" },
   { label: "Experience", href: "/#experience" },
-  { label: "Skills", href: "/#skills" },
   { label: "Work", href: "/#work" },
+  { label: "Stack", href: "/#stack" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -11,12 +10,6 @@ export const socials = {
   linkedin: "https://www.linkedin.com/in/karl-marx-manzano",
   email: "mailto:karlmarxmanzano@gmail.com",
   resume: "https://drive.google.com/file/d/13EOSImM35smJRWmK4R16TmsSSoIZmR5A/view?usp=sharing",
-};
-
-export const stats = {
-  years: 8,
-  projects: 30,
-  clients: 15,
 };
 
 export type ExperienceEntry = {
@@ -201,7 +194,17 @@ export const skills: {
   { name: "AWS", category: "devops" },
 ];
 
-export const projects = [
+export type Project = {
+  title: string;
+  tag: string;
+  description: string;
+  chips: string[];
+  href: string;
+  /** Only set when it maps to a known engagement window — never guessed. */
+  year?: string;
+};
+
+export const projects: Project[] = [
   {
     title: "Buildovate",
     tag: "SaaS · Construction",
@@ -209,7 +212,7 @@ export const projects = [
       "A CRM for construction companies that streamlines lead management, project tracking, contract handling, financial management, and online payments.",
     chips: ["Laravel", "Nuxt.js", "Plaid", "Stripe"],
     href: "https://buildovate.com",
-    image: "/projects/buildovate.png",
+    year: "2024–2025",
   },
   {
     title: "Localmicrosites",
@@ -218,7 +221,7 @@ export const projects = [
       "A platform that generates SEO-optimized websites for local businesses — boosting engagement and search rankings — and manages deployment to their servers.",
     chips: ["Laravel", "Filament", "SEO"],
     href: "https://localmicrosites.com",
-    image: "/projects/localmicrosites.png",
+    year: "2024–2025",
   },
   {
     title: "Pop Up Pros",
@@ -227,7 +230,6 @@ export const projects = [
       "A booking platform that lets pop-up shop vendors reserve events in their area, helping them increase sales and expand their network.",
     chips: [],
     href: "https://thepopuppros.com",
-    image: "/projects/pop-up-pros.png",
   },
   {
     title: "Isuzu Philippines",
@@ -235,6 +237,5 @@ export const projects = [
     description: "A complete revamp of the official Isuzu Philippines website.",
     chips: [],
     href: "https://isuzuphil.com.ph",
-    image: "/projects/isuzuphil.png",
   },
 ];

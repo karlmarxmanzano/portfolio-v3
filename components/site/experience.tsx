@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/reveal";
-import { SectionHeading } from "@/components/site/section-heading";
 import { experience, type ExperienceEntry } from "@/lib/site-data";
 
-const PREVIEW_COUNT = 4;
+const PREVIEW_COUNT = 5;
 
 export function slugFor(item: ExperienceEntry) {
   return item.company
@@ -13,49 +11,45 @@ export function slugFor(item: ExperienceEntry) {
     .replace(/(^-|-$)/g, "");
 }
 
-function companyLabel(item: ExperienceEntry) {
-  return item.location === "Remote" ? item.company : `${item.company} · ${item.location}`;
+function metaFor(item: ExperienceEntry) {
+  const location = item.location === "Remote" ? "Remote" : item.location;
+  return `${item.company} · ${location} · ${item.years}`;
 }
 
 export function Experience() {
   const preview = experience.slice(0, PREVIEW_COUNT);
 
   return (
-    <section id="experience" className="scroll-mt-17.5 py-20">
-      <div className="mx-auto max-w-280 px-5 sm:px-7">
-        <Reveal>
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading kicker="Experience" title="The roles that shaped how I build." className="mb-0" />
-            <Link
-              href="/experience"
-              className="inline-flex items-center gap-1.5 font-mono text-xs tracking-wide text-muted-foreground transition-colors hover:text-blue"
-            >
-              Full history
-              <ArrowRight className="size-3.5" />
-            </Link>
-          </div>
+    <Reveal>
+      <section id="experience" className="mt-25 scroll-mt-16">
+        <div className="flex items-end justify-between border-b border-foreground/[0.10] pb-3.5 font-mono text-[10px] tracking-[0.22em] text-faint uppercase">
+          <span>Experience</span>
+          <Link href="/experience" className="transition-colors hover:text-foreground">
+            Full history →
+          </Link>
+        </div>
 
-          <div className="divide-y divide-line rounded-2xl border border-line">
-            {preview.map((item) => (
-              <Link
-                key={item.company}
-                href={`/experience#${slugFor(item)}`}
-                className="group flex flex-col gap-1 px-5 py-4 transition-colors hover:bg-surface sm:flex-row sm:items-center sm:gap-4"
-              >
-                <span className="shrink-0 font-mono text-[11.5px] tracking-wide text-faint uppercase sm:w-32">
-                  {item.years}
-                </span>
-                <span className="flex-1 font-display text-[15px] font-bold tracking-tight text-head transition-colors group-hover:text-blue">
-                  {item.role}
-                </span>
-                <span className="shrink-0 text-sm text-muted-foreground sm:text-right">
-                  {companyLabel(item)}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
+        {preview.map((item) => (
+          <Link
+            key={item.company}
+            href={`/experience#${slugFor(item)}`}
+            className="grid grid-cols-[30px_minmax(0,1fr)] gap-4 border-b border-foreground/[0.07] py-5.5 transition-[background,padding-left] duration-300 ease-out hover:bg-foreground/[0.045] hover:pl-3.5"
+          >
+            <span className="flex size-7.5 items-center justify-center rounded-[7px] border border-foreground/[0.12] bg-foreground/[0.08] font-mono text-[11px] text-foreground/90">
+              {item.company.charAt(0)}
+            </span>
+            <span>
+              <span className="mb-1 block text-[15px]">{item.role}</span>
+              <span className="mb-2.25 block font-mono text-[10px] tracking-[0.12em] text-faint uppercase">
+                {metaFor(item)}
+              </span>
+              <span className="block text-sm leading-[1.65] text-muted-foreground text-pretty">
+                {item.bullets[0]}
+              </span>
+            </span>
+          </Link>
+        ))}
+      </section>
+    </Reveal>
   );
 }

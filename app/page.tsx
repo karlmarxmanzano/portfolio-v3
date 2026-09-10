@@ -1,6 +1,5 @@
 import { SiteNav } from "@/components/site/site-nav";
 import { Hero } from "@/components/site/hero";
-import { About } from "@/components/site/about";
 import { Experience } from "@/components/site/experience";
 import { Skills } from "@/components/site/skills";
 import { Projects } from "@/components/site/projects";
@@ -11,7 +10,7 @@ export default function Home() {
   return (
     <>
       <SiteNav />
-      <main>
+      <main id="top" className="mx-auto max-w-[700px] px-6.5 pt-22">
         <Hero />
         <Experience />
         <Projects />

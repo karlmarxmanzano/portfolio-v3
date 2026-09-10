@@ -1,61 +1,40 @@
-import { ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/site/reveal";
-import { SectionHeading } from "@/components/site/section-heading";
 import { projects } from "@/lib/site-data";
 
 export function Projects() {
   return (
-    <section id="work" className="scroll-mt-17.5 py-20">
-      <div className="mx-auto max-w-280 px-5 sm:px-7">
-        <Reveal>
-          <SectionHeading kicker="Selected work" title="A few things worth showing." />
-        </Reveal>
-
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
-          {projects.map((project) => (
-            <Reveal key={project.title}>
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noopener"
-                className="group flex h-full flex-col overflow-hidden rounded-xl border-b border-line transition-colors hover:border-blue"
-              >
-                <div className="relative aspect-video overflow-hidden border-b border-line">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                  <span className="absolute bottom-2 left-2 rounded-full border border-line-2 bg-bg-2 px-2 py-0.5 font-mono text-[9px] tracking-wide text-text uppercase">
-                    {project.tag}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-3.5">
-                  <h3 className="mb-1 flex items-center justify-between gap-2 font-display text-sm font-bold tracking-tight">
-                    {project.title}
-                    <ArrowUpRight className="size-3.5 shrink-0 text-faint transition-all group-hover:translate-x-0.75 group-hover:-translate-y-0.75 group-hover:text-blue" />
-                  </h3>
-                  <p className="mb-3 flex-1 line-clamp-2 text-xs text-muted-foreground">{project.description}</p>
-                  {project.chips.length > 0 && (
-                    <div className="flex flex-wrap gap-1.25">
-                      {project.chips.map((chip) => (
-                        <Badge
-                          key={chip}
-                          variant="outline"
-                          className="rounded-full border-line-2 font-mono text-[10px] text-muted-foreground"
-                        >
-                          {chip}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </a>
-            </Reveal>
-          ))}
+    <Reveal>
+      <section id="work" className="mt-25 scroll-mt-16">
+        <div className="border-b border-foreground/[0.10] pb-3.5 font-mono text-[10px] tracking-[0.22em] text-faint uppercase">
+          Selected projects
         </div>
-      </div>
-    </section>
+
+        {projects.map((project, index) => (
+          <a
+            key={project.title}
+            href={project.href}
+            target="_blank"
+            rel="noopener"
+            className="-ml-1.5 -mr-2.5 grid grid-cols-[26px_minmax(0,1fr)_auto] items-baseline gap-4 rounded-[6px] border-b border-foreground/[0.07] py-5.5 pr-2.5 pl-1.5 transition-[background,padding-left] duration-300 ease-out hover:bg-foreground/[0.045] hover:pl-3.5"
+          >
+            <span className="font-mono text-[11px] text-faint">{String(index + 1).padStart(2, "0")}</span>
+            <span className="block">
+              <span className="mb-1.75 block text-[17px] tracking-[-0.01em]">{project.title}</span>
+              <span className="mb-2.25 block text-sm leading-[1.6] text-muted-foreground text-pretty">
+                {project.description}
+              </span>
+              {project.chips.length > 0 && (
+                <span className="block font-mono text-[10px] tracking-[0.1em] text-faint uppercase">
+                  {project.chips.join(" · ")}
+                </span>
+              )}
+            </span>
+            <span className="font-mono text-[11px] whitespace-nowrap text-faint">
+              {project.year ? `${project.year} → ` : "→"}
+            </span>
+          </a>
+        ))}
+      </section>
+    </Reveal>
   );
 }
