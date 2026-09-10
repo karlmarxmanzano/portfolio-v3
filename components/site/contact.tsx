@@ -19,7 +19,7 @@ export function Contact() {
             href={socials.email}
             className="rounded-full bg-foreground px-5 py-3.25 font-mono text-[11px] tracking-[0.14em] text-background uppercase transition-transform hover:-translate-y-0.5"
           >
-            karlmarxmanzano@gmail.com
+            Say Hello
           </a>
           <a
             href={socials.resume}
