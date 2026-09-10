@@ -33,7 +33,7 @@ export function Experience() {
           <Link
             key={item.company}
             href={`/experience#${slugFor(item)}`}
-            className="grid grid-cols-[30px_minmax(0,1fr)] gap-4 border-b border-foreground/[0.07] py-5.5"
+            className="grid grid-cols-[30px_minmax(0,1fr)] gap-4 border-b border-foreground/[0.07] py-5.5 transition-[background,padding-left] duration-300 ease-out hover:bg-foreground/[0.045] hover:pl-3.5"
           >
             <span className="flex size-7.5 items-center justify-center rounded-[7px] border border-foreground/[0.12] bg-foreground/[0.08] font-mono text-[11px] text-foreground/90">
               {item.company.charAt(0)}
