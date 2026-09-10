@@ -4,17 +4,14 @@ export function Hero() {
   return (
     <section className="[animation:km-rise_0.7s_cubic-bezier(0.2,0.8,0.2,1)_both]">
       <div className="mb-9 flex items-center gap-4">
-        <div className="size-16.5 shrink-0 overflow-hidden rounded-full border border-foreground/[0.14]">
+        <div className="size-26 shrink-0 overflow-hidden rounded-full border border-foreground/[0.14]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/portrait.jpg" alt="Karl Marx Manzano" className="h-full w-full object-cover" />
         </div>
       </div>
 
       <h1 className="mb-7 text-[25px] leading-[1.5] font-normal tracking-[-0.012em] text-pretty">
-        Karl Marx Manzano is a full-stack developer based in La Union, Philippines, with around eight years
-        building production software — SaaS platforms, CRMs, and AI-powered pipelines — with Laravel,
-        Nuxt.js, Vue and C#/.NET. He favors clean architecture and domain-driven design, and is currently
-        wiring LLMs into everyday applications.
+        Karl Marx Manzano is a Senior full-stack developer with 8+ years building web applications end to end. Now crafting AI-powered apps with Laravel, Vue, and large language models.
         <span
           aria-hidden
           className="ml-1 inline-block h-[19px] w-2 translate-y-[-3px] bg-foreground align-middle"
